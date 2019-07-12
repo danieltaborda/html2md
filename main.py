@@ -1,6 +1,6 @@
 import os
+import sys
 import codecs
-from markdownify import markdownify as md
 from bs4 import BeautifulSoup
 # https://www.crummy.com/software/BeautifulSoup/bs3/documentation.html#The%20basic%20find%20method:%20findAll(name,%20attrs,%20recursive,%20text,%20limit,%20**kwargs)
 
@@ -12,10 +12,11 @@ def getHtmlFromFile(file):
     # return codecs.open(file, 'r', 'utf-8')
     text = ""
     try:
-        with open(file, "r", encoding='utf-8') as f:
+        with open(file, "r") as f:
             text= f.read()
-    except IOError:print "Could not read file:", file_name
-    sys.exit()
+    except IOError:
+        print "Could not read file:", file_name
+        sys.exit()
     return text
 
 # html_content = getHtmlContent("example md proj")
