@@ -14,7 +14,9 @@ def getHtmlFromFile(file):
     try:
         with open(file, "r", encoding='utf-8') as f:
             text= f.read()
-    except ex:
+    except IOError:
+    print "Could not read file:", file_name
+    sys.exit()
         pass
     return text
 
